@@ -1,0 +1,28 @@
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - release
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: testing and linting this branch
+    steps:
+    - name: check out this repo
+      uses: actions/checkout@v4
+      with:
+        lfs: true
+    - name: install uv
+      uses: astral-sh/setup-uv@v5
+      with:
+        enable-cache: true
+    - name: lint the code
+      run: |
+        uv run ruff check
+    - name: check the code's formatting
+      run: |
+        uv run ruff format --check
+    - name: check for TODOs
+      run: |
+        git ls-files frontend backend | xargs grep -Ii todo | wc -l | xargs ruby -e 'exit ARGV[0].to_i == 0'
