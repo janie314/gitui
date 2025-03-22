@@ -9,13 +9,13 @@ import structlog
 log = structlog.get_logger()
 
 
-def gitlog():
+def git_commits():
     try:
         process = subprocess.Popen(
             [
                 "git",
                 "log",
-                '--pretty=format:{"commit":"%H","author_name":"%an","author_email":"%ae","date":"%ai","message":"%f","parents":"%P"},',
+                '--pretty=format:{"hash":"%H","author_name":"%an","author_email":"%ae","date":"%ai","message":"%f","parents":"%P"},',
             ],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
@@ -53,11 +53,16 @@ def gitlog():
         return None
 
 
-def node_diagram():
+def git_diagram():
+    commits = git_commits()
     nt = Network("500px", "500px")
-    nt.add_node(1, label="Node 1")
-    nt.add_node(2, label="Node 2")
-    nt.add_edge(1, 2)
+    for commit in commits:
+        nt.add_node(commit["hash"], label=commit["hash"])
+    for commit in commits:
+        if commit["parents"]:
+            for parent in commit["parents"]:
+                nt.add_edge(commit["hash"], parent)
+    # nt.add_edge(1, 2)
     script_dir = pathlib.Path(__file__).parent.absolute()
     out_dir = script_dir / "out"
     os.makedirs(out_dir, exist_ok=True)
@@ -66,8 +71,7 @@ def node_diagram():
 
 
 def main():
-    node_diagram()
-    print(gitlog())
+    git_diagram()
 
 
 if __name__ == "__main__":
