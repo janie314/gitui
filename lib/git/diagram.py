@@ -15,7 +15,7 @@ def git_diagram():
                 nt.add_edge(commit["hash"], parent)
     # nt.add_edge(1, 2)
     script_dir = pathlib.Path(__file__).parent.absolute()
-    out_dir = script_dir / "out"
+    out_dir = script_dir / "../../out"
     os.makedirs(out_dir, exist_ok=True)
     os.chdir(out_dir)
     nt.write_html("nx.html", notebook=False)
