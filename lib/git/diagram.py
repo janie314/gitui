@@ -7,10 +7,11 @@ import json
 
 def write_git_diagram_html():
     commits = git_commits()
-    nt = Network("500px", "500px")
-    for commit in commits:
+    nt = Network("1000px", "1000px")
+    for i, commit in enumerate(commits):
         nt.add_node(
-            commit["hash"], label=commit["short_hash"] + " " + commit["message"]
+            commit["hash"], label=commit["short_hash"] + "\n" + commit["message"],
+            y=i*10
         )
     for commit in commits:
         if commit["parents"]:
