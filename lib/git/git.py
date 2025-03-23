@@ -13,7 +13,7 @@ def git_commits():
             [
                 "git",
                 "log",
-                '--pretty=format:{"hash":"%H","author_name":"%an","author_email":"%ae","date":"%ai","message":"%f","parents":"%P"},',
+                '--pretty=format:{"hash":"%H","short_hash":"%h","author_name":"%an","author_email":"%ae","date":"%ai","message":"%f","parents":"%P"},',
             ],
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
