@@ -8,7 +8,7 @@ def git_diagram():
     commits = git_commits()
     nt = Network("500px", "500px")
     for commit in commits:
-        nt.add_node(commit["hash"], label=commit["hash"])
+        nt.add_node(commit["hash"], label=commit["short_hash"]+" "+commit["message"])
     for commit in commits:
         if commit["parents"]:
             for parent in commit["parents"]:
