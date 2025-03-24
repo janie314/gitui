@@ -1,17 +1,13 @@
 {
   "linter": {
     "ignore": [
-      "app/assets/builds/**",
-      "backend/public/assets/**",
-      "backend/static/**",
-      "app/assets/stylesheets/application.tailwind.css",
-      "config/provision/production.json",
-      "vendor/**",
+      ".venv",
+      "out",
       "node_modules",
       "frontend/node_modules",
-      "dist",
-      "doc",
-      ".yardoc"
+      "frontend/tsconfig.node.json",
+      "frontend/tsconfig.app.json",
+      "frontend/eslint.config.js"
     ],
     "rules": {
       "complexity": {
@@ -24,18 +20,13 @@
   },
   "formatter": {
     "ignore": [
-      "app/assets/builds/**",
-      "app/assets/stylesheets/application.tailwind.css",
-      "backend/public/assets/**",
-      "backend/static/**",
-      "vendor/**",
-      "dist",
-      "doc",
-      "package.json",
+      ".venv",
+      "out",
       "node_modules",
       "frontend/node_modules",
-      ".yardoc",
-      "config/provision/production.json"
+      "frontend/tsconfig.node.json",
+      "frontend/tsconfig.app.json",
+      "frontend/eslint.config.js"
     ]
   },
   "css": {
