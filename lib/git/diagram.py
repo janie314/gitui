@@ -10,8 +10,9 @@ def write_git_diagram_html():
     nt = Network("1000px", "1000px")
     for i, commit in enumerate(commits):
         nt.add_node(
-            commit["hash"], label=commit["short_hash"] + "\n" + commit["message"],
-            y=i*10
+            commit["hash"],
+            label=commit["short_hash"] + "\n" + commit["message"],
+            y=i * 10,
         )
     for commit in commits:
         if commit["parents"]:
