@@ -17,12 +17,16 @@ jobs:
       uses: astral-sh/setup-uv@v6
       with:
         enable-cache: true
+    - name: install bun
+      uses: oven-sh/setup-bun@v2
+    - name: bun install
+      run: |
+        bun i
     - name: lint the code
       run: |
         uv run ruff check
-    - name: check the code's formatting
-      run: |
         uv run ruff format --check
+        bun run biome ci
     - name: check for TODOs
       run: |
         git ls-files frontend backend | xargs grep -Ii todo | wc -l | xargs ruby -e 'exit ARGV[0].to_i == 0'

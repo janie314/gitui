@@ -1,0 +1,50 @@
+{
+  "linter": {
+    "ignore": [
+      ".venv",
+      "out",
+      "node_modules",
+      "frontend/node_modules",
+      "frontend/tsconfig.node.json",
+      "frontend/tsconfig.app.json",
+      "frontend/eslint.config.js"
+    ],
+    "rules": {
+      "complexity": {
+        "noStaticOnlyClass": "off"
+      },
+      "correctness": {
+        "useExhaustiveDependencies": "off"
+      }
+    }
+  },
+  "formatter": {
+    "ignore": [
+      ".venv",
+      "out",
+      "node_modules",
+      "frontend/node_modules",
+      "frontend/tsconfig.node.json",
+      "frontend/tsconfig.app.json",
+      "frontend/eslint.config.js"
+    ]
+  },
+  "css": {
+    "formatter": {
+      "indentStyle": "space"
+    }
+  },
+  "json": {
+    "formatter": {
+      "indentStyle": "space"
+    }
+  },
+  "javascript": {
+    "formatter": {
+      "indentStyle": "space"
+    }
+  },
+  "files": {
+    "ignoreUnknown": true
+  }
+}
